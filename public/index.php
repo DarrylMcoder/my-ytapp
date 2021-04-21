@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>YouTube Video Downloader | rafled.com</title>
+    <title>| my-ytapp |</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://static.rafled.com/rafled.com.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +25,15 @@
 
 </head>
 <body>
-
-    <h1>YouTube Video Downloader | <a href="https://rafled.com">rafled.com</a></h1>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1>my-ytapp |<br> <a href="https://rafled.com">rafled.com</a></h1>
  <center>
 <form action="https://api.rafled.com/youtube-downloader/v1/">
-    <input class="input-res" type="text" name="url" placeholder="paste video url here" size="80" id="txt_url" required/>
-    <input class="button" type="button" id="btn_fetch" value="Download Video" onclick="unhidelol()">
+  <input class="input-res" type="text" name="url" placeholder="paste video url here" size="80" id="txt_url" required/><br>
+    <input class="button" type="button" id="btn_fetch" value="Download" onclick="unhidelol()">
     <input class="button" type="submit" value="JSON API">
      </form>
 <div style="display:none;" id="hiddenlol">
@@ -41,10 +44,7 @@
     </center>
    </div>
     <hr>
-    <p> [Early Access] Now you can choose Video Quality and Audio quality when downloading, check it out <a href="https://rafled.com/beta/ytd.php">here</a>.</p>
-    <hr>
-    <p><b> Please Note:</b> This program is for personal use only. Downloading copyrighted material without permission is against <a href="https://www.youtube.com/static?template=terms">YouTube's terms of services</a>. By using this program, you are solely responsible for any copyright violations. We are not responsible for people who attempt to use this program in any way that breaks YouTube's terms of services.
-    </p>
+  <hr>
 <script type="text/javascript">
     function unhidelol() {
    document.getElementById('hiddenlol').style.display = "block";
