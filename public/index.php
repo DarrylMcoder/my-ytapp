@@ -101,7 +101,7 @@
                 </div>
                 <div class="col-8">
                   <h4 class="text-warning" id="blockbtn">
-                        Music
+                        Humour
                     </h4>
                 </div>
             </div>
