@@ -9,7 +9,7 @@ class Browser
 
     protected $user_agent = 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0';
 
-    protected $proxy = "http://f73br37mkmchjz:yl7lcuv3qpy0dwl0cqglstxevv3n3@proxy.quotaguard.com:9292";
+    protected $proxy;
 
     public function __construct()
     {
