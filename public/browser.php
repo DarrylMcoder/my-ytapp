@@ -2,13 +2,14 @@
    
 require('../vendor/autoload.php');
 
-$url = isset($_GET['url']) ? $_GET['url'] : null;
+$url = isset($_POST['url']) ? $_POST['url'] : null;
 
-$url = base64_decode($url);
 
 if (!$url) {
     die("No url provided");
 }
+
+$url = base64_decode($url);
 
 $browser = new \YouTube\Browser();
 $result = $browser->get($url);
