@@ -2,7 +2,7 @@
    
 require('../vendor/autoload.php');
 
-$url = isset($_POST['url']) ? $_POST['url'] : null;
+$url = isset($_REQUEST['url']) ? $_REQUEST['url'] : null;
 
 
 if (!$url) {
