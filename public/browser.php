@@ -4,6 +4,8 @@ require('../vendor/autoload.php');
 
 $url = isset($_GET['url']) ? $_GET['url'] : null;
 
+$url = base64_decode($url);
+
 if (!$url) {
     die("No url provided");
 }
