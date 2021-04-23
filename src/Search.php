@@ -14,13 +14,13 @@ class Search{
     $url = $base.$query;
     $browser = new Browser;
     $result = $browser->get($url);
-    echo $result;
     return $result;
   }
   
   public function search_links($query){
     $search_results = $this->search($query);
     $links = $this->strip_links($search_results);
+    return $links;
   }
   
   public function strip_links($document)
