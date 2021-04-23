@@ -46,6 +46,7 @@ class Search{
 		}		
 		
 		// return the links
+        error_log($match);
 		return $match;
 	}
   
