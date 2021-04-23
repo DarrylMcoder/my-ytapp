@@ -10,7 +10,7 @@ if (!$query) {
 
 
 $youtube = new \YouTube\Search();
-$links = $youtube->search_links($query);
+$links = $youtube->search_yt_links($query);
 
 header('Content-Type: application/json');
 echo json_encode([
