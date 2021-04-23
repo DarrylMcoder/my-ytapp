@@ -14,6 +14,7 @@ class Search{
     $url = $base.$query;
     $browser = new Browser;
     $result = $browser->get($url);
+    echo $result;
     return $result;
   }
   
@@ -46,7 +47,6 @@ class Search{
 		}		
 		
 		// return the links
-        error_log($match);
 		return $match;
 	}
   
