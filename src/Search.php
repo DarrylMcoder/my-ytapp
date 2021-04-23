@@ -60,6 +60,7 @@ class Search{
         unset($links[$key]);
       }
     }
+    return $links;
     
   }
   
