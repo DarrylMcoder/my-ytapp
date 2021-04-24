@@ -29,10 +29,8 @@ class Search{
 						([\"\'])?					# find single or double quote
 						(?(1) (.*?)\\1 | ([^\s\>]+))		# if quote found, match up to next matching
 													# quote, otherwise match up to next space
-                 (?:\s*.*)*\s*.*?>.*\s*?<\/a>    
+                 #(?:\s*.*)*\s*.*?>.*\s*?<\/a>    
 						'isx",$document,$links);
-    $links[1]=preg_last_error_msg();
-						
 		return $links;
 	}
   
