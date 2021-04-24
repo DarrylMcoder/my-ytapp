@@ -31,6 +31,7 @@ class Search{
 													# quote, otherwise match up to next space
                  (?:\s*.*)*\s*.*?>.*\s*?<\/a>    
 						'isx",$document,$links);
+    $links[1]=preg_last_error_msg();
 						
 		return $links;
 	}
