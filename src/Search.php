@@ -31,29 +31,13 @@ class Search{
 													# quote, otherwise match up to next space
 						'isx",$document,$links);
 						
-
-		// catenate the non-empty matches from the conditional subpattern
-
-		while(list($key,$val) = each($links[2]))
-		{
-			if(!empty($val))
-				$match[] = $val;
-		}				
-		
-		while(list($key,$val) = each($links[3]))
-		{
-			if(!empty($val))
-				$match[] = $val;
-		}		
-		
-		// return the links
-		return $match;
+		return $links;
 	}
   
   public function search_yt_links($query){
     $links = $this->search_links($query);
     foreach($links as $key=>$val){
-      if(preg_match_all("/^https?\/\/\:w{3}?\.?youtube\.com\/watch/",$val)!==false){
+      if(preg_match("/^https?\/\/\:w{3}?\.?youtube\.com\/watch/",$val) !== 0){
         preg_match_all('/\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/',$val,$matches);
         $links[$key] = $matches[0];
       }else{
