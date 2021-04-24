@@ -53,7 +53,7 @@ class Search{
   public function search_yt_links($query){
     $links = $this->search_links($query);
     foreach($links as $key=>$val){
-      if(preg_match_all("/https?\/\/:w?w?w?\.?youtube\.com\/watch/",$val)!==false){
+      if(preg_match_all("/^https?\/\/\:w{3}?\.?youtube\.com\/watch/",$val)!==false){
         preg_match_all('/\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/',$val,$matches);
         $links[$key] = $matches[0];
       }else{
