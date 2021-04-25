@@ -25,12 +25,7 @@ class Search{
   
   public function strip_links($document)
 	{	
-		preg_match_all("'<\s*a\s.*?href\s*=\s*			# find <a href=
-						([\"\'])?					# find single or double quote
-						(?(1) (.*?)\\1 | ([^\s\>]+))		# if quote found, match up to next matching
-													# quote, otherwise match up to next space
-                 \s*[^>]*?>[^(?:</a>)]*\s*?<\/a>    
-						'isx",$document,$links);
+		preg_match_all("#<a[^>]+href=\"(.*?)\"[^>]*>(.*?)</a>#",$document,$links);
 		return $links;
 	}
   
