@@ -26,7 +26,8 @@ class Search{
   public function strip_links($document)
 	{	
 		preg_match_all("#(?<full><a[^>]+href=\"(?<href>.*?)\"[^>]*>(?<link_text>.*?)</a>)#",$document,$links);
-		return $links;
+      $array_filtered = array_filter($links, "is_string", ARRAY_FILTER_USE_KEY);
+		return $array_filtered;
 	}
   
   public function search_yt_links($query){
