@@ -25,7 +25,7 @@ class Search{
   
   public function strip_links($document)
 	{	
-		preg_match_all("#<a[^>]+href=\"(.*?<href>)\"[^>]*>(.*?<link_text>)</a>#",$document,$links);
+		preg_match_all("#<a[^>]+href=\"(?<href>.*?)\"[^>]*>(?<link_text>.*?)</a>#",$document,$links);
 		return $links;
 	}
   
