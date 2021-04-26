@@ -35,7 +35,7 @@ class Search{
   }
   
   public function strip_yt_links($document){
-    preg_match_all("#(?<tag><a[^>]+href=\".*?(?<yt_link>https?\://[w]{3}?\.?youtube.com/[^\"]*)\"[^>]*>(?<yt_link_text>.*?)</a>)#ix",$document,$yt_links);
+    preg_match_all("#(?<tag><a[^>]+href=\".*?(?<yt_link>https?\://(?:w{3}|m)?\.?youtube.com/[^\"]*)\"[^>]*>(?<yt_link_text>.*?)</a>)#ix",$document,$yt_links);
     $yt_links_filtered = array_filter($yt_links, "is_string", ARRAY_FILTER_USE_KEY);
     return $yt_links_filtered;
   }
