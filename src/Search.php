@@ -23,25 +23,22 @@ class Search{
     return $links;
   }
   
-  public function strip_links($document)
-	{	
-		preg_match_all("#(?<full><a[^>]+href=\"(?<href>.*?)\"[^>]*>(?<link_text>.*?)</a>)#",$document,$links);
-      $array_filtered = array_filter($links, "is_string", ARRAY_FILTER_USE_KEY);
-		return $array_filtered;
-	}
+  public function strip_links($document){	
+    preg_match_all("#(?<tag><a[^>]+href=\"(?<link>.*?)\"[^>]*>(?<link_text>.*?)</a>)#",$document,$links);
+    $links_filtered = array_filter($links, "is_string", ARRAY_FILTER_USE_KEY);
+    return $links_filtered;
+  }
   
   public function search_yt_links($query){
-    $links = $this->search_links($query);
-    foreach($links as $key=>$val){
-      if(preg_match("/^https?\/\/\:w{3}?\.?youtube\.com\/watch/",$val) !== 0){
-        preg_match_all('/\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/',$val,$matches);
-        $links[$key] = $matches[0];
-      }else{
-        unset($links[$key]);
-      }
-    }
-    return $links;
-    
+    $search_results = $this->search($query);
+    $yt_links = $this->strip_yt_links($search_results);
+    return $yt_links;
+  }
+  
+  public function strip_yt_links($document){
+    preg_match_all("#(?<tag><a[^>]+href=\".*?(?<yt_link>https?\://[w]{3}?\.?youtube.com/[^\"]*)\"[^>]*>(?<yt_link_text>.*?)</a>)#ix",$document,$yt_links);
+    $yt_links_filtered = array_filter($yt_links, "is_string", ARRAY_FILTER_USE_KEY);
+    return $yt_links_filtered;
   }
   
 }
