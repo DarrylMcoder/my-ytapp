@@ -3,14 +3,13 @@
 namespace YouTube;
 
 class Search{
-  protected $query;
-  protected $video_links;
-  protected $main_link;
+  protected $search_engine = "http://www.google.com/search?safe=strict&q=";
+  protected $default_query = " video site:youtube.com";
   
   public function search($query){
-    $query .= " video site:youtube.com";
+    $query .= $this->default_query;
     $query = urlencode($query);
-    $base = "http://www.google.com/search?safe=strict&q=";
+    $base = $this->search_engine;
     $url = $base.$query;
     $browser = new Browser;
     $result = $browser->get($url);
