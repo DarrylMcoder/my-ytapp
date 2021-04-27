@@ -168,6 +168,7 @@ class YouTubeDownloader
                 // sometimes as appear as "cipher" or "signatureCipher"
                 $cipher = Utils::arrayGet($item, 'cipher', Utils::arrayGet($item, 'signatureCipher', ''));
                 $itag = $item['itag'];
+                $name = $parser->parseName($js_code);
 
                 // some videos do not need to be decrypted!
                 if (isset($item['url'])) {
@@ -175,7 +176,8 @@ class YouTubeDownloader
                     $return[] = array(
                         'url' => $item['url'],
                         'itag' => $itag,
-                        'format' => $parser->parseItagInfo($itag)
+                        'format' => $parser->parseItagInfo($itag),
+                        'name' => $name,
                     );
 
                     continue;
@@ -193,7 +195,8 @@ class YouTubeDownloader
                 $return[] = array(
                     'url' => $url . '&' . $sp . '=' . $decoded_signature,
                     'itag' => $itag,
-                    'format' => $parser->parseItagInfo($itag)
+                    'format' => $parser->parseItagInfo($itag),
+                    'name' => $name,
                 );
             }
 
