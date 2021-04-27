@@ -47,11 +47,7 @@ class Search{
   }
   
   public function search_ready_download($query){
-    $search_results = $this->search($query);
-    preg_match_all("#(?<tag><a[^>]+href=\".*?(?<yt_link>https?\://(?:w{3}|m)?\.?youtube.com/watch[^\"]*)\"[^>]*>(?<yt_link_text>.*?)</a>)#ix",$search_results,$yt_links);
-    
-    //remove unnamed keys from array
-    $yt_links_filtered = array_filter($yt_links, "is_string", ARRAY_FILTER_USE_KEY);
+    $yt_links_filtered = $this->search_yt_links($query);
     //rewrite anchor tags to URL of 
     //downloader prefilled with YouTube link
     $regex = "#(<a[^>]+href=\").*?(https?\://(?:w{3}|m)?\.?youtube.com/watch[^\"]*\"[^>]*>.*?</a>)#i";
@@ -59,10 +55,8 @@ class Search{
     $ready_links = preg_replace($regex,
                                 $repstr,
                          $yt_links_filtered);
-    return $ready_links;
+    return $yt_links_filtered;
   }
-  
-  
   
 }
     
