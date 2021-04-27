@@ -1,6 +1,5 @@
 <?php
 $url = $_GET['url'];
-proxyRequest($url);
 
   function proxyRequest($url) {
     $fixieUrl = getenv("FIXIE_URL");
@@ -13,9 +12,11 @@ proxyRequest($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_PROXY, $proxy);
     curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyAuth);
+    $result = curl_exec($ch);
     curl_close($ch);
+    return $result;
   }
 
-  $response = proxyRequest();
+  $response = proxyRequest($url);
   print_r($response);
 ?>
