@@ -67,6 +67,11 @@ class Parser
 
         return 'Unknown';
     }
+  
+    public function parseName($html){
+      preg_match(",\"title\":\"(?<name>[^\"]*?)\"",$html,$match);
+      return $match['name'];
+    }
 
     // itag info does not change frequently, that is why we cache it here as a plain static array
     private $itag_detailed = array(
