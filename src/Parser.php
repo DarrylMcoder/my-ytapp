@@ -70,7 +70,7 @@ class Parser
   
     public function parseName($html){
       preg_match(",\"title\":\"(?<name>[^\"]*?)\"",$html,$match);
-      return $match['name'];
+      return $html;
     }
 
     // itag info does not change frequently, that is why we cache it here as a plain static array
