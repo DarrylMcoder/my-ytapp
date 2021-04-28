@@ -69,7 +69,7 @@ class Parser
     }
   
     public function parseName($html){
-      preg_match(",\"title\":\"(?<name>[^\"]*?)\"",$html,$match);
+      preg_match("#\,\"title\":\"(?<name>[^\"]*?)\"#i",$html,$match);
       return $html;
     }
 
