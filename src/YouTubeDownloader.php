@@ -10,6 +10,7 @@ class YouTubeDownloader
 
     /** @var string|null */
     protected $error;
+    public $info = "No info logged";
 
     function __construct()
     {
@@ -168,7 +169,6 @@ class YouTubeDownloader
                 // sometimes as appear as "cipher" or "signatureCipher"
                 $cipher = Utils::arrayGet($item, 'cipher', Utils::arrayGet($item, 'signatureCipher', ''));
                 $itag = $item['itag'];
-                $name = $parser->parseName($js_code);
 
                 // some videos do not need to be decrypted!
                 if (isset($item['url'])) {
@@ -177,7 +177,6 @@ class YouTubeDownloader
                         'url' => $item['url'],
                         'itag' => $itag,
                         'format' => $parser->parseItagInfo($itag),
-                        'name' => $name,
                     );
 
                     continue;
@@ -195,8 +194,7 @@ class YouTubeDownloader
                 $return[] = array(
                     'url' => $url . '&' . $sp . '=' . $decoded_signature,
                     'itag' => $itag,
-                    'format' => $parser->parseItagInfo($itag),
-                    'name' => $name,
+                    'format' => $parser->parseItagInfo($itag)
                 );
             }
 
@@ -220,10 +218,16 @@ class YouTubeDownloader
         if (strpos($page_html, 'We have been receiving a large volume of requests') !== false ||
             strpos($page_html, 'systems have detected unusual traffic') !== false ||
             strpos($page_html, '/recaptcha/') !== false) {
+            
+           //use proxy if blocked by youtube
+            $Fixie = getenv("FIXIE_URL");
+            $this->client->setProxy($Fixie);
+            $this->info = "Error 429 encountered. Using proxy.";
+            return $this->getDownloadLinks($video_id);
 
-            $this->error = 'HTTP 429: Too many requests.';
+            //$this->error = 'HTTP 429: Too many requests.';
 
-            return array();
+            //return array();
         }
 
         // get JSON encoded parameters that appear on video pages
