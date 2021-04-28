@@ -13,8 +13,11 @@ $links = $youtube->getDownloadLinks($url);
 
 $error = $youtube->getLastError();
 
+$info = $youtube->info;
+
 header('Content-Type: application/json');
 echo json_encode([
     'links' => $links,
-    'error' => $error
+    'error' => $error,
+    'info' => $info
 ], JSON_PRETTY_PRINT);
