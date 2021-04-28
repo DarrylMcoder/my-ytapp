@@ -1,0 +1,10 @@
+.info{
+  text-align:center;
+  color:black;
+  background-color:yellow;
+  border:solid black 2px;
+  padding:5px;
+  float:center;
+  left:5px;
+  right:5px;
+}
