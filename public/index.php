@@ -8,6 +8,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     <title>| my-ytapp |</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://static.rafled.com/rafled.com.css">
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Matomo -->
 <script type="text/javascript">
@@ -40,10 +41,15 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     <input class="button" type="submit" value="JSON API">
      </form>
 <div style="display:none;" id="hiddenlol">
-<video width="800" height="600" controls>
+    <center>
+      <div class="info" id="info">
+      
+      </div>
+<video width="100%" controls>
     <source src="" type="video/mp4"/>
     <em>Sorry, your browser doesn't support HTML5 video.</em>
 </video>
+    
     </center>
    </div>
     <hr>
@@ -64,9 +70,13 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
                 oThis.attr('disabled', false);
                 var links = data['links'];
                 var error = data['error'];
+                var info  = data['info'];
                 if (error) {
                     alert('Error: ' + error);
                     return;
+                }
+                if(info){
+                  document.getElementById("info").innerHTML = info;
                 }
                 // first link with video
                 var first = links.find(function (link) {
