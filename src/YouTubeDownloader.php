@@ -10,7 +10,7 @@ class YouTubeDownloader
 
     /** @var string|null */
     protected $error;
-    public $info = "No info logged";
+    public $info;
 
     function __construct()
     {
