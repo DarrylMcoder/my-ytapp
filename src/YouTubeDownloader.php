@@ -10,7 +10,8 @@ class YouTubeDownloader
 
     /** @var string|null */
     protected $error;
-    public $info;
+    protected $info;
+    protected $videoName;
 
     function __construct()
     {
@@ -26,6 +27,20 @@ class YouTubeDownloader
     {
         return $this->error;
     }
+  
+    public function getInfo(){
+      return $this->info;
+    }
+  
+    public function getVideoName(){
+      return $this->videoName;
+    }
+  
+    public function parseVideoName($html){
+      preg_match("#\,\"title\":\"(?<name>[^\"]*?)\"#i",$html,$match);
+      return $match['name'];
+    }
+
 
     /**
      * Look for a player script URL. E.g:
@@ -214,6 +229,7 @@ class YouTubeDownloader
         $this->error = null;
 
         $page_html = $this->getPageHtml($video_id);
+        $this->videoName = $this->parseVideoName($page_html);
 
         if (strpos($page_html, 'We have been receiving a large volume of requests') !== false ||
             strpos($page_html, 'systems have detected unusual traffic') !== false ||
