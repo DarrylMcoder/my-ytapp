@@ -10,23 +10,6 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     <link rel="stylesheet" href="https://static.rafled.com/rafled.com.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Matomo -->
-<script type="text/javascript">
-  var _paq = window._paq = window._paq || [];
-  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//analytics.rafled.com/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '2']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<!-- End Matomo Code -->
-
-
 </head>
 <body>
   <br>
@@ -45,6 +28,9 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
       <div class="info" id="info">
       
       </div>
+      <h3 id="title">
+        
+      </h3>
 <video width="100%" controls>
     <source src="" type="video/mp4"/>
     <em>Sorry, your browser doesn't support HTML5 video.</em>
@@ -63,6 +49,8 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     $(function () {
         $("#btn_fetch").click(function () {
             var url = $("#txt_url").val();
+            //var url = btoa(url);
+            //var url = encodeURIComponent(url);
             var oThis = $(this);
             oThis.attr('disabled', true);
             $.get('video_info.php', {url: url}, function (data) {
@@ -71,13 +59,19 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
                 var links = data['links'];
                 var error = data['error'];
                 var info  = data['info'];
-                if (error) {
+                var name  = data['name'];
+            if (error) {
                     alert('Error: ' + error);
                     return;
-                }
-                if(info){
+            }
+            if(info){
                   document.getElementById("info").innerHTML = info;
-                }
+            }
+              
+            if(name){
+              var title = document.getElementById('title');
+              title.innerHTML = name;
+            }
                 // first link with video
                 var first = links.find(function (link) {
                     return link['format'].indexOf('video') !== -1;
