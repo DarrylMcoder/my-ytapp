@@ -10,7 +10,7 @@ class YoutubeStreamer
     protected $headers = array();
     protected $headers_sent = false;
 
-    protected $debug = false;
+    public $debug = false;
 
     protected function sendHeader($header)
     {
