@@ -8,7 +8,8 @@ if (!$url) {
     die("No url provided");
 }
 
-//$url = base64_decode($url);
+//comment next line to disable encryption
+$url = base64_decode($url);
 
 $youtube = new \YouTube\YouTubeDownloader();
 

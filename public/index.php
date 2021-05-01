@@ -49,8 +49,8 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     $(function () {
         $("#btn_fetch").click(function () {
             var url = $("#txt_url").val();
-            //var url = btoa(url);
-            //var url = encodeURIComponent(url);
+            //comment next line to disable encryption
+            var url = btoa(url);
             var oThis = $(this);
             oThis.attr('disabled', true);
             $.get('video_info.php', {url: url}, function (data) {
@@ -80,7 +80,10 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
                     alert('No video found!');
                     return;
                 }
-                var stream_url = 'stream.php?url=' + encodeURIComponent(first['url']);
+                var code_url = first['url'];
+                //comment next line to disable encryption
+                var code_url = btoa(first['url']);
+                var stream_url = 'stream.php?url=' + encodeURIComponent(code_url);
                 var video = $("video");
                 video.attr('src', stream_url);
                 video[0].load();
