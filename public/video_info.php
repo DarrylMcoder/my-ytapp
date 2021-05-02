@@ -4,12 +4,15 @@ require('../vendor/autoload.php');
 
 $url = isset($_GET['url']) ? $_GET['url'] : null;
 
+if(isset($_GET['crypt']) && $_GET['crypt'] == 'on'){
+$url = base64_decode($url);
+}
+
+
 if (!$url) {
     die("No url provided");
 }
 
-//comment next line to disable encryption
-$url = base64_decode($url);
 
 $youtube = new \YouTube\YouTubeDownloader();
 
