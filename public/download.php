@@ -23,7 +23,6 @@ $info = $youtube->getInfo();
 $name = $youtube->getVideoName();
 
 $vid_url = $links[0]['url'];
-var_dump($links);
 
 $youtubefiledownloader->download($vid_url);
     
