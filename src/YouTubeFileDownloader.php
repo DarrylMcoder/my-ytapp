@@ -13,6 +13,9 @@ class YouTubeFileDownloader
     protected $debug = false;
   
     protected $file_name;
+    public function setFileName($name){
+      $this->file_name = $name;
+    }
 
     protected function sendHeader($header)
     {
