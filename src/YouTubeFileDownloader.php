@@ -10,7 +10,9 @@ class YouTubeFileDownloader
     protected $headers = array();
     protected $headers_sent = false;
 
-    public $debug = false;
+    protected $debug = false;
+  
+    protected $file_name;
 
     protected function sendHeader($header)
     {
@@ -31,7 +33,12 @@ class YouTubeFileDownloader
             if ($status_code == 200 || $status_code == 206 || $status_code == 403 || $status_code == 404) {
                 $this->headers_sent = true;
                 $this->sendHeader(rtrim($data));
-                $this->sendHeader("Content-Disposition: attachment");
+                if(isset($this->file_name)){
+                  $file_name = $this->file_name;
+                }else{
+                  $file_name = "video";
+                }
+                $this->sendHeader("Content-Disposition: attachment; filename=\"".$file_name."\"");
             }
 
         } else {
