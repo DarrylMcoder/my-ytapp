@@ -23,11 +23,13 @@ $name = $youtube->getVideoName();
 $vid_url = $links[0]['url'];
 
 if(!isset($vid_url)){
-die "No video found!";
+  echo "No video found!";
+  exit;
 }
 
 if(isset($error)){
-  die "ERROR: ".$error;
+  echo "ERROR: ".$error;
+  exit;
 }
 
 $youtubefiledownloader = new \YouTube\YouTubeFileDownloader();
