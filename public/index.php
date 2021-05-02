@@ -21,7 +21,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
 <form action="download.php" method="get">
   <input class="input-res" type="text" name="url" placeholder="paste video url here" size="80" id="txt_url" value="<?= $url; ?>" required/><br>
     <input class="button" type="button" id="btn_fetch" value="Download" onclick="unhidelol()">
-    <input class="button" type="button"  id="btn_save" value="Save to Files">
+    <input class="button" type="submit"  id="btn_save" value="Save to Files">
      </form>
 <div style="display:none;" id="hiddenlol">
     <center>
