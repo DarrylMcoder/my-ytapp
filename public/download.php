@@ -10,7 +10,7 @@ if ($url == false) {
     die("No url provided");
 }
 
-$youtubefiledownloader = new \YouTube\YouTubeFileDownloader;
+$youtubefiledownloader = new \YouTube\YouTubeFileDownloader();
 
 $youtube = new \YouTube\YouTubeDownloader();
 
