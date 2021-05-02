@@ -12,7 +12,7 @@ if ($url == false) {
 
 $youtubefiledownloader = new \YouTube\YoutubeFileDownloader;
 
-$youtube = new \YouTube\YoutubeDownloader;
+$youtube = new \YouTube\YoutubeDownloader();
 
 $links = $youtube->getDownloadLinks($url);
 
