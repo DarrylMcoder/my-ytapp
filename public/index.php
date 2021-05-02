@@ -21,7 +21,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
 <form action="download.php" method="get">
   <input class="input-res" type="text" name="url" placeholder="paste video url here" size="80" id="txt_url" value="<?= $url; ?>" required/><br>
     <input class="button" type="button" id="btn_fetch" value="Download" onclick="unhidelol()">
-    <input class="button" type="submit" value="Save to Files">
+    <input class="button" type="button"  id="btn_save" value="Save to Files">
      </form>
 <div style="display:none;" id="hiddenlol">
     <center>
@@ -53,7 +53,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
             var url = btoa(url);
             var oThis = $(this);
             oThis.attr('disabled', true);
-            $.get('video_info.php', {url: url}, function (data) {
+            $.get('video_info.php?crypt=on', {url: url}, function (data) {
                 console.log(data);
                 oThis.attr('disabled', false);
                 var links = data['links'];
@@ -83,7 +83,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
                 var code_url = first['url'];
                 //comment next line to disable encryption
                 var code_url = btoa(first['url']);
-                var stream_url = 'stream.php?url=' + encodeURIComponent(code_url);
+                var stream_url = 'stream.php?crypt=on&url=' + encodeURIComponent(code_url);
                 var video = $("video");
                 video.attr('src', stream_url);
                 video[0].load();
