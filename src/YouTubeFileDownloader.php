@@ -42,6 +42,7 @@ class YouTubeFileDownloader
                   $file_name = "video";
                 }
                 $this->sendHeader("Content-Disposition: attachment; filename=\"".$file_name."\"");
+                $this->sendHeader("Content-Description: File Transfer");
             }
 
         } else {
