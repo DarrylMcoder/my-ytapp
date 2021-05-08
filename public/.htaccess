@@ -1,4 +1,0 @@
-RewriteEngine on
-RewriteCond %{REQUEST_URI} !^.*?/crypto\.php.*?$
-RewriteCond %{REQUEST_URI} ^.*?(\.html|\.php)\??.*?$
-RewriteRule ^(.*?)$ crypto/crypto.php?file=$1 
