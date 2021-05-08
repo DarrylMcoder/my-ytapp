@@ -10,8 +10,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     <link rel="stylesheet" href="https://static.rafled.com/rafled.com.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
- EMAIL THESE INSTRUCTIONS
+ 
 <!-- Matomo -->
 <script type="text/javascript">
   var _paq = window._paq = window._paq || [];
