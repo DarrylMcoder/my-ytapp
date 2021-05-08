@@ -10,12 +10,11 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     <link rel="stylesheet" href="https://static.rafled.com/rafled.com.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-<!-- Matomo -->
+
+  <!-- Matomo -->
 <script type="text/javascript">
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
@@ -26,7 +25,6 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
-<noscript><p><img src="//analytics.darrylmcoder.com/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Matomo Code -->
   
 </head>
