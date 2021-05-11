@@ -236,9 +236,9 @@ class YouTubeDownloader
             strpos($page_html, '/recaptcha/') !== false) {
             
            //use proxy if blocked by youtube
+            $this->info = "Error 429 encountered. Using proxy.";
             $Fixie = getenv("FIXIE_URL");
             $this->client->setProxy($Fixie);
-            $this->info = "Error 429 encountered. Using proxy.";
             return $this->getDownloadLinks($video_id);
 
             //$this->error = 'HTTP 429: Too many requests.';
