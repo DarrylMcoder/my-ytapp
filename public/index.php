@@ -44,6 +44,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
       Save to Files
   </button>
   <a href="" id="save-link" download>
+    link
   </a>
      </form>
 <div style="display:none;" id="hiddenlol">
