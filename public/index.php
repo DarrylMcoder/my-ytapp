@@ -164,7 +164,6 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
                 var stream_url = 'stream.php?crypt=on&url=' + encodeURIComponent(code_url);
                 var a = $("save-link");
                 a.attr('href', stream_url);
-                a.click();
             });
         });
     });
