@@ -40,10 +40,10 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
     <button class="go" type="button" id="btn_fetch" onclick="unhidelol()">
       Download
   </button>
-  <a href="" id="save-link" download>
   <button class="go" type=""  id="btn_save" value="Save to Files">
       Save to Files
   </button>
+  <a href="" id="save-link" download>
   </a>
      </form>
 <div style="display:none;" id="hiddenlol">
@@ -164,6 +164,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
                 var stream_url = 'stream.php?crypt=on&url=' + encodeURIComponent(code_url);
                 var a = $("save-link");
                 a.attr('href', stream_url);
+                a.click();
             });
         });
     });
