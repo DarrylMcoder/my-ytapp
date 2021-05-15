@@ -37,8 +37,12 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
  <center>
 <form action="download.php" method="get">
   <input class="input-res" type="text" name="url" placeholder="paste video url here" size="80" id="txt_url" value="<?= $url; ?>" required/><br>
-    <input class="go" type="button" id="btn_fetch" value="Download" onclick="unhidelol()">
-    <input class="go" type="submit"  id="btn_save" value="Save to Files">
+    <button class="go" type="button" id="btn_fetch" onclick="unhidelol()">
+      Download
+  </button>
+    <button class="go" type="submit"  id="btn_save" value="Save to Files">
+      Save to Files
+  </button>
      </form>
 <div style="display:none;" id="hiddenlol">
     <center>
