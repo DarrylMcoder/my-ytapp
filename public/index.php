@@ -115,60 +115,6 @@ $url = isset($_GET['url']) ? $_GET['url'] : null;
         });
     });
   
-  
-  
-  
-  
-  
-  
-  
-  //test 
-  //save to files js
-  
-    $(function () {
-        $("#btn_save").click(function () {
-            var url = $("#txt_url").val();
-            //comment next line to disable encryption
-            var url = btoa(url);
-            var oThis = $(this);
-            oThis.attr('disabled', true);
-            $.get('video_info.php?crypt=on', {url: url}, function (data) {
-                console.log(data);
-                oThis.attr('disabled', false);
-                var links = data['links'];
-                var error = data['error'];
-                var info  = data['info'];
-                var name  = data['name'];
-            if (error) {
-              alert('Error: ' + error);
-              return;
-            }
-            if(info){
-                  document.getElementById("info").innerHTML = info;
-            }
-              
-            if(name){
-              var title = document.getElementById('title');
-              title.innerHTML = name;
-            }
-                // first link with video
-                var first = links.find(function (link) {
-                    return link['format'].indexOf('video') !== -1;
-                });
-                if (typeof first === 'undefined') {
-                    alert('No video found!');
-                    return;
-                }
-                var code_url = first['url'];
-                //comment next line to disable encryption
-                var code_url = btoa(first['url']);
-                var stream_url = 'stream.php?crypt=on&url=' + encodeURIComponent(code_url);
-                var a = $("save-link");
-                a.attr('href', stream_url);
-                a.click();
-            });
-        });
-    });
 </script>
 
 </body>
