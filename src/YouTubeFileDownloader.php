@@ -43,6 +43,7 @@ class YouTubeFileDownloader
                 }
                 $this->sendHeader("Content-Disposition: attachment; filename=\"".$file_name."\"");
                 $this->sendHeader("Content-Description: File Transfer");
+                $this->sendHeader("Content-Transfer-Encoding: binary");
             }
 
         } else {
