@@ -117,6 +117,7 @@ class YouTubeDownloader
                 'eurl' => 'https://youtube.googleapis.com/v/' . $video_id,
                 'el' => 'embedded' // or detailpage. default: embedded, will fail if video is not embeddable
             ]));
+      var_dump($response);
 
         if ($response) {
             $arr = array();
